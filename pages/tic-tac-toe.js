@@ -24,7 +24,7 @@ const RenderTicTac = () => {
         [2, 4, 6],
       ],
     };
-    // eslint-disable-next-line no-restricted-syntax, guard-for-in
+    // eslint-disable-next-line no-restricted-syntax,, guard-for-in
     for (const combo in winners) {
       winners[combo].forEach((match) => {
         if (
