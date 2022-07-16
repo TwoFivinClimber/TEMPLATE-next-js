@@ -25,19 +25,19 @@ const RenderTicTac = () => {
       ],
     };
     // eslint-disable-next-line no-restricted-syntax, guard-for-in
-    for (const match in winners) {
-      winners[match].forEach((pattern) => {
+    for (const combo in winners) {
+      winners[combo].forEach((match) => {
         if (
-          squares[pattern[0]] === ''
-            || squares[pattern[1]] === ''
-            || squares[pattern[2]] === ''
+          squares[match[0]] === ''
+            || squares[match[1]] === ''
+            || squares[match[2]] === ''
         ) {
           // do nothing
         } else if (
-          squares[pattern[0]] === squares[pattern[1]]
-          && squares[pattern[0]] === squares[pattern[1]]
+          squares[match[0]] === squares[match[1]]
+          && squares[match[1]] === squares[match[2]]
         ) {
-          setWinner(squares[pattern[0]]);
+          setWinner(squares[match[0]]);
         }
       });
     }
@@ -89,7 +89,6 @@ const RenderTicTac = () => {
           </tr>
         </tbody>
       </table>
-
     </div>
   );
 };
