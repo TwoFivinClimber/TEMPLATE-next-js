@@ -5,7 +5,7 @@ import { React, useState } from 'react';
 const RenderTicTac = () => {
   const [turn, setTurn] = useState('X');
   const [cells, setCells] = useState(Array(9).fill(''));
-  const [winner, setWinner] = useState('?');
+  const [winner] = useState('?');
 
   const winGame = (squares) => {
     const winners = {
@@ -25,21 +25,10 @@ const RenderTicTac = () => {
       ],
     };
     // eslint-disable-next-line no-restricted-syntax, guard-for-in
-    for (const combo in winners) {
-      winners[combo].forEach((match) => {
-        if (
-          squares[match[0]] === ''
-            || squares[match[1]] === ''
-            || squares[match[2]] === ''
-        ) {
-          // do nothing
-        } else if (
-          squares[match[0]] === squares[match[1]]
-          && squares[match[1]] === squares[match[2]]
-        ) {
-          setWinner(squares[match[0]]);
-        }
-      });
+    for (const win in winners) {
+      if (winners[win].includes(squares.x)) {
+        console.warn('match found');
+      }
     }
   };
   // eslint-disable-next-line no-unused-vars
@@ -56,7 +45,6 @@ const RenderTicTac = () => {
       squares[num] = 'O';
       setTurn('X');
     }
-
     winGame(squares);
     setCells(squares);
   };
