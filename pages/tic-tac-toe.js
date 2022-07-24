@@ -25,8 +25,8 @@ const RenderTicTac = () => {
       ],
     };
     // eslint-disable-next-line no-restricted-syntax,, guard-for-in
-    for (const combo in winners) {
-      winners[combo].forEach((match) => {
+    for (const set in winners) {
+      winners[set].forEach((match) => {
         if (
           squares[match[0]] === ''
             || squares[match[1]] === ''
@@ -71,7 +71,7 @@ const RenderTicTac = () => {
       <table className="tic-tac-table">
         <tbody>
           <h4>Turn: {turn}</h4>
-          <h4>The Winner in { winner }</h4>
+          <h4>The Winner is { winner }</h4>
           <tr>
             <Cell num={0} />
             <Cell num={1} />
