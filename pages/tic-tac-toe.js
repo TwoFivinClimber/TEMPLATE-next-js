@@ -26,16 +26,20 @@ const RenderTicTac = () => {
     };
     // eslint-disable-next-line no-restricted-syntax,, guard-for-in
     for (const set in winners) {
+      // LOOPS OVER ARR WITHIN winners. set === across, down, diagonal.
       winners[set].forEach((match) => {
+        // LOOPS THROUGH ARR'S IN ACROSS, DOWN, DIAGONAL. match === individual arr's in across, down, and diagonal.
         if (
           squares[match[0]] === ''
             || squares[match[1]] === ''
             || squares[match[2]] === ''
         ) {
-          // do nothing
+          // SQUARES = ['X', 'X', 'X', 'O', 'X', 'O', 'O', '', ''] *** X's AND O's WERE played by user and stored in state.
+          // DO NOTHING IF ANY WINNING COMBOS ARE EMPTY
         } else if (
           squares[match[0]] === squares[match[1]]
           && squares[match[1]] === squares[match[2]]
+          // THIS HARD PART.  I WASN'T BREAKING DOWN THE ORDER OF EVENTS WITH THE COMPARISON IN MIND. WHEN I LOGGGD match TO SEE THAT IT GAVE ME THE ARRAYS, AND THEN LOGGED squares[match[0]] TO SEE THAT IT WAS WORKING "LINEARLY" TO RETURN THE INDICES FROM THE WINNERS, IT MADES SENSE HOW true WAS BEING OBTAINED. USING THE ABOVE SQUARES VALUE: squares[match[0]] === "x", squares[match[1]] === "x" AND squares[match[2] === "x". ==> setWinner.
         ) {
           setWinner(squares[match[0]]);
         }
